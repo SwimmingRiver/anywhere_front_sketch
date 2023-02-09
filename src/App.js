@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import Join from "./Components/Join";
+import styled from "styled-components";
+import { BrowserRouter,Route,Routes,Link } from "react-router-dom";
+import Main from './Pages/Main';
 
+const Title = styled.h1`
+  font-size: 3em;
+  color: #a566ff;
+  font-family: "Itim", cursive;
+  /* text-shadow: -1px 0px #a566ff, 0px 1px white, 1px 0px black, 0px -1px black; */
+  text-shadow: 1px 1px 1px;
+`;
+const Wrapper = styled.div`
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Wrapper>
+     <Title>Anywhere</Title>
+     
+
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main/>}/>
+        <Route path="/join" element={<Join/>}/>
+      </Routes>
+      </BrowserRouter>
+      </Wrapper>
+    </>
   );
 }
 
