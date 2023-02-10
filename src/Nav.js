@@ -15,6 +15,7 @@ const MenuList = styled.div`
 const MenuItem = styled.li`
   list-style: none;
 `;
+
 function Nav() {
   return (
     <NavWrapper>
@@ -22,11 +23,15 @@ function Nav() {
       <hr />
       <ul>
         <MenuList>
-          {[1, 2, 3, 4].map((v) => (
-            <MenuItem>
-              <Link to="/join">{v}</Link>
-            </MenuItem>
-          ))}
+          <MenuItem>
+            <Link to="/">home</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/join">join</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/login">login</Link>
+          </MenuItem>
         </MenuList>
       </ul>
     </NavWrapper>
