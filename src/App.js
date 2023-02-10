@@ -1,7 +1,8 @@
 import Join from "./Components/Join";
 import styled from "styled-components";
-import { BrowserRouter,Route,Routes,Link } from "react-router-dom";
-import Main from './Pages/Main';
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import Main from "./Pages/Main";
+import Login from "./Components/Login";
 
 const Title = styled.h1`
   font-size: 3em;
@@ -20,16 +21,16 @@ const Wrapper = styled.div`
 function App() {
   return (
     <>
-    <Wrapper>
-     <Title>Anywhere</Title>
-     
+      <Wrapper>
+        <Title>Anywhere</Title>
 
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main/>}/>
-        <Route path="/join" element={<Join/>}/>
-      </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/join" element={<Join />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
       </Wrapper>
     </>
   );

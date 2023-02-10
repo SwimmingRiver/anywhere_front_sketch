@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const NavWrapper = styled.div`
   border: solid black 1px;
   width: 100%;
@@ -22,7 +23,9 @@ function Nav() {
       <ul>
         <MenuList>
           {[1, 2, 3, 4].map((v) => (
-            <MenuItem>{v}</MenuItem>
+            <MenuItem>
+              <Link to="/join">{v}</Link>
+            </MenuItem>
           ))}
         </MenuList>
       </ul>
