@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const NavWrapper = styled.div`
   border: solid black 1px;
   width: 100%;
@@ -14,6 +15,7 @@ const MenuList = styled.div`
 const MenuItem = styled.li`
   list-style: none;
 `;
+
 function Nav() {
   return (
     <NavWrapper>
@@ -21,9 +23,15 @@ function Nav() {
       <hr />
       <ul>
         <MenuList>
-          {[1, 2, 3, 4].map((v) => (
-            <MenuItem>{v}</MenuItem>
-          ))}
+          <MenuItem>
+            <Link to="/">home</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/join">join</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/login">login</Link>
+          </MenuItem>
         </MenuList>
       </ul>
     </NavWrapper>

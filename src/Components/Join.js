@@ -1,5 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import useInput from "../Hooks/useInput";
+import { userInfoSlice } from "../Reducer/UserInfoSlice";
 
 function Join() {
   const [id, setId] = useInput("");
@@ -14,16 +16,31 @@ function Join() {
     [password]
   );
   const [nickname, setNickname] = useInput("");
+
+  const userData = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const addUser=(aId,aPw,aName)=>{
+    let _user={
+        id:aId,
+        pw:aPw,
+        name:aName,
+        // on:false
+    }
+    return _user;
+}
   const onsubmit = useCallback(
     (e) => {
       e.preventDefault();
       if (passwordErr) {
         return setPasswordErr(true);
       }
-      console.log("welcome");
+     
+      dispatch(userInfoSlice.actions.join(addUser(id,password,nickname)));
     },
     [id, password, passwordCheck, nickname]
   );
+
   return (
     <>
       <h2>Join</h2>
