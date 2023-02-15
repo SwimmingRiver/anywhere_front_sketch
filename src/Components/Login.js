@@ -1,3 +1,5 @@
+import { KAKAO_AUTH_URL } from './../Util/kakaoJoin';
+
 function Login() {
     return (
       <>
@@ -12,6 +14,7 @@ function Login() {
             <input placeholder="password" />
           </div>
           <button>login</button>
+          <a href={KAKAO_AUTH_URL}>Kakao</a>
         </form>
       </>
     );
