@@ -17,7 +17,7 @@ const Box = styled.div`
     background-color: aquamarine;
 `;
 
-function Carousel(){
+function Carousel(props){
     const settings = {
         dots: false,
         infinite: true,
@@ -27,7 +27,7 @@ function Carousel(){
       };
     return(
         <SliderWrapper>
-        <h2> 여행지 이름</h2>
+        <h2> props.place</h2>
         <Slider {...settings}>
           <div>
             <Box>1</Box>
