@@ -5,8 +5,8 @@ const CarouselWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 200px 200px;
-  grid-template-rows: 200px 200px;
+  grid-template-columns: 50em 50em;
+  grid-template-rows: 50em 50em;
   place-items: center;
 `;
 

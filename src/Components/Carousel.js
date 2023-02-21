@@ -27,7 +27,7 @@ function Carousel(props){
       };
     return(
         <SliderWrapper>
-        <h2> props.place</h2>
+        <h2>{props.place}</h2>
         <Slider {...settings}>
           <div>
             <Box>1</Box>
