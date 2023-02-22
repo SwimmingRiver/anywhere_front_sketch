@@ -5,9 +5,15 @@ const CarouselWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 50em 50em;
-  grid-template-rows: 50em 50em;
+  grid-template-columns: 25em 25em;
+  grid-template-rows: 25em 25em;
   place-items: center;
+  @media(max-width:500px){
+    grid-template-columns: 100%;
+    grid-template-rows: 25em 25em 25em 25em 25em;
+    place-items: center;
+    
+  }
 `;
 
 

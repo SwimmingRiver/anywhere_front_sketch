@@ -8,13 +8,21 @@ const SliderWrapper = styled.div`
     border: solid 1px black;
     width: 25vw;
     height: 25vh;
+    @media(max-width:500px){
+   width:80vw;
+   height: 40vh;
+  }
 `;
 const Box = styled.div`
     border: solid 1px black;
     width: 25vw;
     height: 25vh;
     border-radius: 5px;
-    background-color: aquamarine;
+    background-color: white;
+    @media(max-width:500px){
+    width: 80vw;
+    height: 40vh;
+  }
 `;
 
 function Carousel(props){
