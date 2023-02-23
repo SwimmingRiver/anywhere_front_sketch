@@ -54,10 +54,10 @@ function App() {
           </Hamburg>
      <Title>Anywhere</Title>
      </HeadWrapper>
-      <BrowserRouter basename="/anywhere/front_sketch/">
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
       {navToggle ? <Nav /> : null}
       <Routes>
-        <Route path="/" element={<Main/>}/>
+        <Route exact path="/" element={<Main/>}/>
         <Route path="/join" element={<Join/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/kakaologin" element={<Kakao/>}/>
