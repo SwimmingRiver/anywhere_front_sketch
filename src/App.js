@@ -54,7 +54,7 @@ function App() {
           </Hamburg>
      <Title>Anywhere</Title>
      </HeadWrapper>
-      <BrowserRouter>
+      <BrowserRouter basename="/anywhere/front_sketch/">
       {navToggle ? <Nav /> : null}
       <Routes>
         <Route path="/" element={<Main/>}/>
