@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavWrapper = styled.div`
   border: solid black 1px;
   width: 100%;
-  height: 20vh;
+  height: 28vh;
   background-color: #a566ff;
 `;
 const MenuList = styled.div`
@@ -39,6 +39,9 @@ function Nav() {
             <MenuItem>
               <StyledLink to="/login">Login</StyledLink>
             </MenuItem>
+            <MenuItem>
+            <StyledLink to="/lodgeinfo">Lodgeinfo</StyledLink>
+          </MenuItem>
           </MenuList>
 
       </ul>

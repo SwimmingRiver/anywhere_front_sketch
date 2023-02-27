@@ -7,6 +7,7 @@ import Nav from './Nav';
 import Kakao from "./Util/Kakao";
 import { useState } from "react";
 import Search from "./Components/Search";
+import LodgeInfo from "./Components/LodgeInfo";
 
 const Title = styled.h1`
   font-size: 1em;
@@ -67,6 +68,7 @@ function App() {
         <Route path="/join" element={<Join/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/kakaologin" element={<Kakao/>}/>
+        <Route path="/lodgeinfo" element={<LodgeInfo />} />
       </Routes>
       </BrowserRouter>
       </Wrapper>
