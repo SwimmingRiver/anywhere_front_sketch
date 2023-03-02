@@ -4,7 +4,14 @@ export const initialState = [
     id: "",
     password: "",
     nickname: "",
-  },
+    on: false,
+  },{
+    id: "1",
+    password: "1",
+    nickname: "1",
+    on: false,
+  }
+  
 ];
 
 export const userInfoSlice = createSlice({
@@ -13,6 +20,10 @@ export const userInfoSlice = createSlice({
   reducers: {
     join: (state, action) => {
       state.push(action.payload);
+    }, 
+    login: (state, action) => {
+      const index = state.map((v) => v.id).indexOf(action.payload.id);
+      state[index].on = true;
     },
   },
 });

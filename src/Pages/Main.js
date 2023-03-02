@@ -77,13 +77,14 @@ function Main() {
       </Routes>
       <Lower>
         <Item>
-          <span class="material-symbols-outlined">home</span>
+          <Link to="/"><span class="material-symbols-outlined">home</span></Link>
+ 
         </Item>
         <Item>
           <span class="material-symbols-outlined">search</span>
         </Item>
         <Item>
-          <span class="material-symbols-outlined">account_circle</span>
+          <Link to="/join"><span class="material-symbols-outlined">account_circle</span></Link>
         </Item>
         <Item>
           <span class="material-symbols-outlined">more_horiz</span>

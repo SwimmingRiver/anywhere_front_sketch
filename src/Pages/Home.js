@@ -12,7 +12,7 @@ const CarouselWrapper = styled.div`
     grid-template-columns: 100%;
     grid-template-rows: 25em 25em 25em 25em 25em;
     place-items: center;
-    
+    height: 80vh;
   }
 `;
 
