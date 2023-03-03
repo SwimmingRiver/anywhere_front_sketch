@@ -1,5 +1,6 @@
 import Carousel from "../Components/Carousel";
 import styled from "styled-components";
+import { useSelector } from 'react-redux';
 
 const CarouselWrapper = styled.div`
   width: 100%;
@@ -18,6 +19,7 @@ const CarouselWrapper = styled.div`
 
 
 function Home(){
+    const LoggedUser = useSelector((state)=>state);
     return(<>
      <h1>Home</h1>
     <CarouselWrapper>

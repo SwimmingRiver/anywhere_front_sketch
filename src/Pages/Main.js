@@ -8,6 +8,7 @@ import Kakao from "../Util/Kakao";
 import { useState } from "react";
 import Search from "../Components/Search";
 import LodgeInfo from "../Components/LodgeInfo";
+import Planner from "../Components/Planner";
 
 const Title = styled.h1`
   font-size: 1em;
@@ -65,26 +66,30 @@ function Main() {
     <Wrapper>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
        <HeadWrapper>
-       <Title><Link to="/">Anywhere</Link></Title>
+       <Title><Link style={{ textDecoration: "none", color: "white" }} to="/">Anywhere</Link></Title>
        </HeadWrapper>
-       <Search/>   
       <Routes>
         <Route exact path="/" element={<Home/>}/>
         <Route path="/join" element={<Join/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/kakaologin" element={<Kakao/>}/>
         <Route path="/lodgeinfo" element={<LodgeInfo />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/planner" element={<Planner />} />
       </Routes>
       <Lower>
-        <Item>
-          <Link to="/"><span class="material-symbols-outlined">home</span></Link>
- 
+        <Item> 
+          <Link to="/planner">
+                <span class="material-symbols-outlined">add</span>
+              </Link>
         </Item>
         <Item>
-          <span class="material-symbols-outlined">search</span>
+        <Link to="/search">
+                <span class="material-symbols-outlined">search</span>
+              </Link>
         </Item>
         <Item>
-          <Link to="/join"><span class="material-symbols-outlined">account_circle</span></Link>
+          <Link to="/login"><span class="material-symbols-outlined">account_circle</span></Link>
         </Item>
         <Item>
           <span class="material-symbols-outlined">more_horiz</span>

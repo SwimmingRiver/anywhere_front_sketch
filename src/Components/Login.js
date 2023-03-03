@@ -3,6 +3,7 @@ import useInput from "../Hooks/useInput";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import userInfoSlice from "../Reducer/UserInfoSlice";
+import {Link} from "react-router-dom";
 
 function Login() {
   const [id, setId] = useInput("");
@@ -32,6 +33,7 @@ function Login() {
           </div>
           <button>login</button>
           <a href={KAKAO_AUTH_URL}>Kakao</a>
+          <Link to="/join">sign up</Link>
         </form>
       </>
     );

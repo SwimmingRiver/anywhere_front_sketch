@@ -1,22 +1,35 @@
 import styled from "styled-components";
 
 const SearchWrapper = styled.div`
-    border: solid 1px black;
+  border: solid 1px black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  @media (max-width: 500px) {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100vw;
-    
+    flex-direction: column;
+
+    height: 100%;
+  }
 `;
 
-function Search(){
-    return(<>
-        <SearchWrapper>
-            <h2>search btn</h2>
-            <h2>when? where</h2>
-            <h2>filter</h2>
-        </SearchWrapper>
-    </>)
+function Search() {
+  return (
+    <>
+      <SearchWrapper>
+        <input placeholder="어느 도시가 궁금하세요?" />
+        <button>search</button>
+        <hr />
+        <h2>인기도시|해외도시|국내도시 ...카테고리</h2>
+        <hr />
+        <ul>
+          <li>유명 도시 목록</li>
+        </ul>
+      </SearchWrapper>
+    </>
+  );
 }
 
 export default Search;

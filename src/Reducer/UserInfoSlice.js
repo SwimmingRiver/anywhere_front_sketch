@@ -16,7 +16,7 @@ export const initialState = [
 
 export const userInfoSlice = createSlice({
   name: "user",
-  initialState: initialState,
+  initialState,
   reducers: {
     join: (state, action) => {
       state.push(action.payload);
