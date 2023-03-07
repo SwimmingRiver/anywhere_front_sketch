@@ -81,7 +81,7 @@ function Main() {
         <Route path="/lodgeinfo" element={<LodgeInfo />} />
         <Route path="/search" element={<Search />} />
         <Route path="/planner" element={<Planner />} />
-        <Route path="/profie" element={<Profile/>}/>
+        <Route path="/profile" element={<Profile/>}/>
       </Routes>
       <Lower>
         <Item>
