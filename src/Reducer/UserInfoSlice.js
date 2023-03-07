@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 export const initialState = [
   {
-    id: "",
-    password: "",
-    nickname: "",
-    on: false,
-  },{
     id: "1",
     password: "1",
-    nickname: "1",
+    nickname: "firstman",
     on: false,
-  }
-  
+  },
+  {
+    id: "2",
+    password: "2",
+    nickname: "2",
+    on: false,
+  },
 ];
 
 export const userInfoSlice = createSlice({
@@ -24,6 +24,10 @@ export const userInfoSlice = createSlice({
     login: (state, action) => {
       const index = state.map((v) => v.id).indexOf(action.payload.id);
       state[index].on = true;
+    },
+    logout: (state, action) => {
+      const index = state.map((v) => v.id).indexOf(action.payload.id);
+      state[index].on = false;
     },
   },
 });

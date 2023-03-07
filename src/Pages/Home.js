@@ -1,6 +1,10 @@
 import Carousel from "../Components/Carousel";
 import styled from "styled-components";
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { useCallback } from 'react';
+import userInfoSlice from './../Reducer/UserInfoSlice';
+
 
 const CarouselWrapper = styled.div`
   width: 100%;
@@ -19,9 +23,22 @@ const CarouselWrapper = styled.div`
 
 
 function Home(){
-    const LoggedUser = useSelector((state)=>state);
+  const LoggedUser = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onClick = useCallback(() => {
+    let index = LoggedUser.map((v) => v.on).indexOf(true);
+    dispatch(userInfoSlice.actions.logout(LoggedUser[index]));
+    navigate("/");
+  }, []);
+
     return(<>
      <h1>Home</h1>
+     <h2>{LoggedUser.map((v) => (v.on ? `welcome,${v.nickname}` : null))}</h2>
+      {LoggedUser.map((v) => v.on).includes(true) ? (
+        <button onClick={onClick}>logout</button>
+      ) : null}
     <CarouselWrapper>
         <Carousel place="도쿄" />
         <Carousel place="런던" />

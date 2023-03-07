@@ -9,6 +9,8 @@ import { useState } from "react";
 import Search from "../Components/Search";
 import LodgeInfo from "../Components/LodgeInfo";
 import Planner from "../Components/Planner";
+import { useSelector } from 'react-redux';
+import Profile from "./Profile";
 
 const Title = styled.h1`
   font-size: 1em;
@@ -61,6 +63,9 @@ const Item = styled.li`
 `;
 
 function Main() {
+  const Logged = useSelector((state) => state);
+  const LoggedCheck = Logged.map((v) => v.on).includes(true);
+ 
   return (
     <>
     <Wrapper>
@@ -76,10 +81,16 @@ function Main() {
         <Route path="/lodgeinfo" element={<LodgeInfo />} />
         <Route path="/search" element={<Search />} />
         <Route path="/planner" element={<Planner />} />
+        <Route path="/profie" element={<Profile/>}/>
       </Routes>
       <Lower>
+        <Item>
+          <Link to="/">
+              <span class="material-symbols-outlined">home</span>
+          </Link>
+            </Item>
         <Item> 
-          <Link to="/planner">
+        <Link to={LoggedCheck ? "/planner" : "/login"}>
                 <span class="material-symbols-outlined">add</span>
               </Link>
         </Item>
@@ -88,12 +99,13 @@ function Main() {
                 <span class="material-symbols-outlined">search</span>
               </Link>
         </Item>
-        <Item>
-          <Link to="/login"><span class="material-symbols-outlined">account_circle</span></Link>
-        </Item>
-        <Item>
-          <span class="material-symbols-outlined">more_horiz</span>
-        </Item>
+              <Item>
+                <Link to={LoggedCheck ? "/profile" : "/login"}>
+                  <span class="material-symbols-outlined">account_circle</span>
+                </Link>
+              </Item>
+            
+
       </Lower>
       </BrowserRouter>
       </Wrapper>
