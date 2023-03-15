@@ -11,6 +11,7 @@ import LodgeInfo from "../Components/LodgeInfo";
 import Planner from "../Components/Planner";
 import { useSelector } from 'react-redux';
 import Profile from "./Profile";
+import Place from "../Components/Place";
 
 const Title = styled.h1`
   font-size: 1em;
@@ -82,6 +83,7 @@ function Main() {
         <Route path="/search" element={<Search />} />
         <Route path="/planner" element={<Planner />} />
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/place/:id" element={<Place />} />
       </Routes>
       <Lower>
         <Item>

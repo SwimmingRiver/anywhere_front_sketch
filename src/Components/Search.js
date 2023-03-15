@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 const SearchWrapper = styled.div`
   border: solid 1px black;
@@ -26,7 +27,13 @@ function Search() {
         <hr />
         <ul>
           <li>유명 도시 목록</li>
+          
         </ul>
+        {["0", "1", "2"].map((value, index) => (
+          <Link index={index} to={`/place/${value}`}>
+            where ever
+          </Link>
+        ))}
       </SearchWrapper>
     </>
   );
