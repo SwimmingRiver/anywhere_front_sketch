@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import useInput from "../Hooks/useInput";
-import { userInfoSlice } from "../Reducer/UserInfoSlice";
+import userInfoSlice from "../Reducer/UserInfoSlice";
 
 function Join() {
   const [id, setId] = useInput("");
@@ -17,26 +18,35 @@ function Join() {
   );
   const [nickname, setNickname] = useInput("");
 
-  const userData = useSelector((state) => state);
+  const navigate = useNavigate();
+
+  // const userData = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const addUser=(aId,aPw,aName)=>{
-    let _user={
-        id:aId,
-        pw:aPw,
-        name:aName,
-        // on:false
-    }
+  const addUser = (aId, aPw, aName) => {
+    let _user = {
+      id: aId,
+      pw: aPw,
+      name: aName,
+      // on:false
+    };
     return _user;
-}
+  };
   const onsubmit = useCallback(
     (e) => {
       e.preventDefault();
       if (passwordErr) {
         return setPasswordErr(true);
       }
-     
-      dispatch(userInfoSlice.actions.join(addUser(id,password,nickname)));
+
+      dispatch(
+        userInfoSlice.actions.join({
+          id: id,
+          password: password,
+          nickname: nickname,
+        })
+      );
+      navigate("/");
     },
     [id, password, passwordCheck, nickname]
   );

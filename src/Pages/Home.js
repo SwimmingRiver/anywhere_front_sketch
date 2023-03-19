@@ -23,7 +23,7 @@ const CarouselWrapper = styled.div`
 
 
 function Home(){
-  const LoggedUser = useSelector((state) => state);
+  const LoggedUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function Home(){
     let index = LoggedUser.map((v) => v.on).indexOf(true);
     dispatch(userInfoSlice.actions.logout(LoggedUser[index]));
     navigate("/");
-  }, []);
+  }, [LoggedUser]);
 
     return(<>
      <h1>Home</h1>

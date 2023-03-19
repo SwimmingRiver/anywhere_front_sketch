@@ -19,7 +19,8 @@ const ImageBox = styled.div`
   overflow: hidden;
 `;
 function Profile() {
-  const me = useSelector((state) => state.filter((v) => v.on === true));
+  const user = useSelector((state) => state.user);
+  const me = user.filter((v) => v.on === true);
   return (
     <Wrapper>
       <ImageBox>{/* <img src={require("")} /> */}</ImageBox>

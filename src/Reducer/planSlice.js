@@ -4,7 +4,7 @@ const initialState={
     plans:[]
 };
 
-export const PlanSlice=createSlice({
+const PlanSlice=createSlice({
     name:'plan',
     initialState,
     reducers:{
@@ -12,4 +12,6 @@ export const PlanSlice=createSlice({
             state.push(action.payload);
         }
     }
-})
+});
+
+export default PlanSlice;
