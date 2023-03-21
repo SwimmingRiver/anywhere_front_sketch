@@ -29,6 +29,17 @@ const userInfoSlice = createSlice({
       const index = state.map((v) => v.id).indexOf(action.payload.id);
       state[index].on = false;
     },
+    changeNickname: (state, action) => {
+      const {id,nickname}=action.payload;
+      const index = state.map((v) => v.id).indexOf(id);
+      state.splice(index, 1, {
+        id: state[index].id,
+        password: state[index].password,
+        nickname: nickname,
+        on: true,
+      });
+      // state[index].nickname = action.payload;
+    },
   },
 });
 
