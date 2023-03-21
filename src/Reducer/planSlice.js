@@ -9,7 +9,7 @@ const PlanSlice=createSlice({
     initialState,
     reducers:{
         "ADD_PLAN":(state,action)=>{
-            state.push(action.payload);
+            state.plans.push(action.payload);
         }
     }
 });
