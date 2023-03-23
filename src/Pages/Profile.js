@@ -22,6 +22,10 @@ const ImageBox = styled.div`
 function Profile() {
   const user = useSelector((state) => state.user);
   const me = user.filter((v) => v.on === true);
+
+  const plans = useSelector((state) => state.plan.plans);
+  const myPlans = plans.filter((v) => v.id === me[0].id);
+
   return (
     <Wrapper>
       <ImageBox>{/* <img src={require("")} /> */}</ImageBox>
@@ -29,6 +33,7 @@ function Profile() {
       <h1>{`${me[0].nickname}`}</h1>
       <h2>내 리뷰 </h2>
       <h2>내 여행</h2>
+      <h2>{`${myPlans[0].cities}`}</h2>
     </Wrapper>
   );
 }

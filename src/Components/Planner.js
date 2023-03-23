@@ -3,7 +3,7 @@ import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import PlanSlice from "../Reducer/planSlice";
 
 const StyledCalendar = styled(Calendar)`
@@ -61,9 +61,15 @@ function Planner() {
       return newCities;
     });
   };
+
+  const user = useSelector((state) => state.user);
+  const me = user.filter((v) => v.on === true);
+
+
   const onMakePlan = () => {
     //reducer  날짜+지역
     const plan = {
+      id:me[0].id,
       cities: visitedCities,
       dates: selectedDates.map((date) => ({
         year: date.getFullYear(),
