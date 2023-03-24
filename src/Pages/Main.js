@@ -68,7 +68,7 @@ function Main() {
   return (
     <>
       <Wrapper>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <HeadWrapper>
             <Title>
               <Link style={{ textDecoration: "none", color: "white" }} to="/">

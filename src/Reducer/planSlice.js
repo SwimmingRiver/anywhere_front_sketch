@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState={
-    plans:[]
-};
+const initialState=[
+
+];
 
 const PlanSlice=createSlice({
     name:'plan',
     initialState,
     reducers:{
         "ADD_PLAN":(state,action)=>{
-            state.plans.push(action.payload);
+            state.push(action.payload);
         }
     }
 });

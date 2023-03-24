@@ -23,9 +23,10 @@ function Profile() {
   const user = useSelector((state) => state.user);
   const me = user.filter((v) => v.on === true);
 
-  const plans = useSelector((state) => state.plan.plans);
-  const myPlans = plans.filter((v) => v.id === me[0].id);
+  const plans = useSelector((state) => state.plan);
+  const myPlans = plans.filter((v) => v.id === me[0]?.id);
 
+  console.log(myPlans);
   return (
     <Wrapper>
       <ImageBox>{/* <img src={require("")} /> */}</ImageBox>
@@ -33,7 +34,7 @@ function Profile() {
       <h1>{`${me[0].nickname}`}</h1>
       <h2>내 리뷰 </h2>
       <h2>내 여행</h2>
-      <h2>{`${myPlans[0].cities}`}</h2>
+      <h2>{myPlans[0]?.cities && myPlans.map((v)=>v.cities.map((v,i)=><li key={i}>{v}</li>))}</h2>
     </Wrapper>
   );
 }
