@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import Profile from "./Profile";
 import Place from "../Components/Place";
 import EditProfile from './../Components/EditProfile';
+import MyPlan from "../Components/MyPlan";
 
 const Title = styled.h1`
   font-size: 1em;
@@ -88,6 +89,7 @@ function Main() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/place/:id" element={<Place />} />
             <Route path="/editprofile" element={<EditProfile/>}/>
+            <Route path="/myplan" element={<MyPlan />} />
           </Routes>
           <Lower>
             <Item>

@@ -79,7 +79,7 @@ function Planner() {
     };
 
     dispatch(PlanSlice.actions.ADD_PLAN(plan));
-    navigate("/");
+    navigate("/myplan");
   };
   return (
     <>

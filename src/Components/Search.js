@@ -30,7 +30,7 @@ function Search() {
           
         </ul>
         {["0", "1", "2"].map((value, index) => (
-          <Link index={index} to={`/place/${value}`}>
+          <Link key={index} to={`/place/${value}`}>
             where ever
           </Link>
         ))}
