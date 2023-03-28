@@ -43,9 +43,12 @@ function Search() {
           ? null
           : List.filter((v) => v.includes(keyword.toLowerCase())).map(
               (v, i) => (
+                <>
                 <Link to={`/place/${v}`} key={i}>
                   {v}
                 </Link>
+                <button>+</button>
+                </>
               )
             )}
         <hr />

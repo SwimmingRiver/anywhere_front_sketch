@@ -27,11 +27,11 @@ function Login() {
         <form onSubmit={onSubmit}>
           <div>
             <label>id</label>
-            <input value={id} onChange={setId} placeholder="id" />
+            <input value={id} onChange={setId} required placeholder="id" />
           </div>
           <div>
             <label>password</label>
-            <input value={password} onChange={setPassword} placeholder="password" />
+            <input value={password} onChange={setPassword} type="password" required placeholder="password" />
           </div>
           <button>login</button>
           <a href={KAKAO_AUTH_URL}>Kakao</a>

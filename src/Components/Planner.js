@@ -70,7 +70,6 @@ function Planner() {
     //reducer  날짜+지역
     const plan = {
       id:me[0].id,
-      cities: visitedCities,
       dates: selectedDates.map((date) => ({
         year: date.getFullYear(),
         month: date.getMonth() + 1,
@@ -79,20 +78,12 @@ function Planner() {
     };
 
     dispatch(PlanSlice.actions.ADD_PLAN(plan));
-    navigate("/myplan");
+    navigate("/search");
   };
   return (
     <>
       planner
-      <h2>
-        {Object.keys(cities).map((v, i) => (
-          <li key={i}>
-            <button onClick={() => toggleCityVisited(v)}>
-              {v} {cities[v] ? "- O" : null}
-            </button>
-          </li>
-        ))}
-      </h2>
+    
       <StyledCalendar
         value={dateRange}
         onChange={handleDateChange}
@@ -102,7 +93,6 @@ function Planner() {
         <h2>시작/끝 날짜를 선택하세요</h2>
       ) : (
         <button onClick={onMakePlan}>
-          {visitedCities.map((v) => v + ",")}
           {selectedDates[0]?.getFullYear()}.{selectedDates[0]?.getMonth()}.
           {selectedDates[0]?.getDate()}~
           {selectedDates[selectedDates.length - 1]?.getFullYear()}.
