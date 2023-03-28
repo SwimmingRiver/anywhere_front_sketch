@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import useInput from "../Hooks/useInput";
 
 const SearchWrapper = styled.div`
   border: solid 1px black;
@@ -17,23 +18,37 @@ const SearchWrapper = styled.div`
 `;
 
 function Search() {
+  const List = [
+    "서울",
+    "부산",
+    "대구",
+    "서산",
+    "부천",
+    "대전",
+    "부에노스 아이레스",
+    "울산",
+  ];
+
+  const [keyword, setKeyword] = useInput("");
+
   return (
     <>
       <SearchWrapper>
-        <input placeholder="어느 도시가 궁금하세요?" />
-        <button>search</button>
+        <input
+          value={keyword}
+          onChange={setKeyword}
+          placeholder="어느 도시가 궁금하세요?"
+        />
+        {keyword === ""
+          ? null
+          : List.filter((v) => v.includes(keyword.toLowerCase())).map(
+              (v, i) => (
+                <Link to={`/place/${v}`} key={i}>
+                  {v}
+                </Link>
+              )
+            )}
         <hr />
-        <h2>인기도시|해외도시|국내도시 ...카테고리</h2>
-        <hr />
-        <ul>
-          <li>유명 도시 목록</li>
-          
-        </ul>
-        {["0", "1", "2"].map((value, index) => (
-          <Link key={index} to={`/place/${value}`}>
-            where ever
-          </Link>
-        ))}
       </SearchWrapper>
     </>
   );
