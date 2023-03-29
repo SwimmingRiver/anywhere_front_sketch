@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
-const Box = styled.div``;
 const ImageBox = styled.div`
   width: 5em;
   height: 5em;

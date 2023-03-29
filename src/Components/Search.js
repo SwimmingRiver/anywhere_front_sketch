@@ -17,7 +17,7 @@ const SearchWrapper = styled.div`
   }
 `;
 
-function Search() {
+function Search(props) {
   const List = [
     "서울",
     "부산",
@@ -34,6 +34,7 @@ function Search() {
   return (
     <>
       <SearchWrapper>
+        <h1>도시</h1>
         <input
           value={keyword}
           onChange={setKeyword}
@@ -44,10 +45,10 @@ function Search() {
           : List.filter((v) => v.includes(keyword.toLowerCase())).map(
               (v, i) => (
                 <>
-                <Link to={`/place/${v}`} key={i}>
-                  {v}
-                </Link>
-                <button>+</button>
+                  <Link to={`/place/${v}`} key={i}>
+                    {v}
+                  </Link>
+                  <button onClick={() => props.setCities(v)}>+</button>
                 </>
               )
             )}

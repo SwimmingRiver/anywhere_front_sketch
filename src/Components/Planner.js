@@ -3,8 +3,9 @@ import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PlanSlice from "../Reducer/planSlice";
+import Search from "./Search";
 
 const StyledCalendar = styled(Calendar)`
   & .react-calendar {
@@ -28,14 +29,14 @@ function Planner() {
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);
   const [selectedDates, setSelectedDates] = useState([]);
 
-  const [cities, setCities] = useState({
-    서울: false,
-    부산: false,
-    제주: false,
-    대구: false,
-    경주: false,
-
-  });
+  // const [cities, setCities] = useState({
+  //   서울: false,
+  //   부산: false,
+  //   제주: false,
+  //   대구: false,
+  //   경주: false,
+  // });
+  const [cities, setCities] = useState("");
   const visitedCities = Object.keys(cities).filter((key) => cities[key]);
 
   const navigate = useNavigate();
@@ -65,11 +66,14 @@ function Planner() {
   const user = useSelector((state) => state.user);
   const me = user.filter((v) => v.on === true);
 
+  const [peopleNum, setPeopleNum] = useState(1);
 
   const onMakePlan = () => {
     //reducer  날짜+지역
     const plan = {
-      id:me[0].id,
+      id: me[0].id,
+      city: cities,
+      reservationNumber: peopleNum,
       dates: selectedDates.map((date) => ({
         year: date.getFullYear(),
         month: date.getMonth() + 1,
@@ -78,12 +82,34 @@ function Planner() {
     };
 
     dispatch(PlanSlice.actions.ADD_PLAN(plan));
-    navigate("/search");
+    navigate("/profile");
   };
   return (
     <>
       planner
-    
+      <h3>인원</h3>
+      <input
+        onChange={(e) => {
+          setPeopleNum(e.target.value);
+        }}
+        placeholder="예약 인원"
+        value={peopleNum}
+      />
+      <button
+        onClick={() => {
+          peopleNum > 1 ? setPeopleNum(peopleNum - 1) : setPeopleNum(1);
+        }}
+      >
+        -
+      </button>
+      <button
+        onClick={() => {
+          setPeopleNum(peopleNum + 1);
+        }}
+      >
+        +
+      </button>
+      <Search setCities={setCities} />
       <StyledCalendar
         value={dateRange}
         onChange={handleDateChange}
@@ -93,8 +119,9 @@ function Planner() {
         <h2>시작/끝 날짜를 선택하세요</h2>
       ) : (
         <button onClick={onMakePlan}>
-          {selectedDates[0]?.getFullYear()}.{selectedDates[0]?.getMonth()}.
-          {selectedDates[0]?.getDate()}~
+          {peopleNum}명,
+          {cities},{selectedDates[0]?.getFullYear()}.
+          {selectedDates[0]?.getMonth()}.{selectedDates[0]?.getDate()}~
           {selectedDates[selectedDates.length - 1]?.getFullYear()}.
           {selectedDates[selectedDates.length - 1]?.getMonth()}.
           {selectedDates[selectedDates.length - 1]?.getDate()}
