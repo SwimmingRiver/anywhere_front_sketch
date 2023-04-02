@@ -1,11 +1,21 @@
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import Carousel from "./Carousel";
 
 function LodgeInfo() {
+  const { id, room } = useParams();
+  // const me = useSelector((state) =>
+  //   state.user.map((v) => v).filter((v) => v.on === true)
+  // );
+  const me = useSelector((state) => state.user.filter((v) => v.on === true));
+
   return (
     <>
-      <h1>lodge info</h1>
+      <h1>{me}</h1>
+      <h1>{id}lodge info</h1>
+
       <Carousel />
-      <h2>숙소 이름</h2>
+      <h2>숙소 이름{room}</h2>
       <hr />
       <h2>호스트 정보</h2>
       <hr />
@@ -19,6 +29,7 @@ function LodgeInfo() {
       <hr />
       <h2>후기</h2>
       <hr />
+      <button></button>
     </>
   );
 }

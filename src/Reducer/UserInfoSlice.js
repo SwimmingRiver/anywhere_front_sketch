@@ -2,8 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const initialState = [
   {
     id: "1",
+    email: "123@123.com",
+    isHost: false,
     password: "1",
     nickname: "firstman",
+    mobile: "000-0000-0000",
     on: false,
   },
   {
@@ -20,7 +23,7 @@ const userInfoSlice = createSlice({
   reducers: {
     join: (state, action) => {
       state.push(action.payload);
-    }, 
+    },
     login: (state, action) => {
       const index = state.map((v) => v.id).indexOf(action.payload.id);
       state[index].on = true;
@@ -30,7 +33,7 @@ const userInfoSlice = createSlice({
       state[index].on = false;
     },
     changeNickname: (state, action) => {
-      const {id,nickname}=action.payload;
+      const { id, nickname } = action.payload;
       const index = state.map((v) => v.id).indexOf(id);
       state.splice(index, 1, {
         id: state[index].id,

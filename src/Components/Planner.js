@@ -82,7 +82,7 @@ function Planner() {
     };
 
     dispatch(PlanSlice.actions.ADD_PLAN(plan));
-    navigate("/profile");
+    navigate(`/place/${cities}`);
   };
   return (
     <>
@@ -95,27 +95,29 @@ function Planner() {
         placeholder="예약 인원"
         value={peopleNum}
       />
-      <button
-        onClick={() => {
-          peopleNum > 1 ? setPeopleNum(peopleNum - 1) : setPeopleNum(1);
-        }}
-      >
-        -
-      </button>
-      <button
-        onClick={() => {
-          setPeopleNum(peopleNum + 1);
-        }}
-      >
-        +
-      </button>
+      <div>
+        <button
+          onClick={() => {
+            peopleNum > 1 ? setPeopleNum(peopleNum - 1) : setPeopleNum(1);
+          }}
+        >
+          -
+        </button>
+        <button
+          onClick={() => {
+            setPeopleNum(peopleNum + 1);
+          }}
+        >
+          +
+        </button>
+      </div>
       <Search setCities={setCities} />
       <StyledCalendar
         value={dateRange}
         onChange={handleDateChange}
         selectRange={true}
       />
-      {selectedDates.length === 0 ? (
+      {selectedDates.length === 0 || cities === "" ? (
         <h2>시작/끝 날짜를 선택하세요</h2>
       ) : (
         <button onClick={onMakePlan}>

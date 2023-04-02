@@ -38,6 +38,7 @@ function EditProfile() {
     <Wrapper>
       <ImageBox>{/* <img src={require("")} /> */}</ImageBox>
       <input onChange={setNickname} placeholder={`${me[0].nickname}`} />
+      <input placeholder={`${me[0].mobile}`}/>
       <button onClick={onClick}>profie edit</button>
     </Wrapper>
   );
