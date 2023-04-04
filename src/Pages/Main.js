@@ -13,6 +13,7 @@ import Profile from "./Profile";
 import Place from "../Components/Place";
 import EditProfile from "./../Components/EditProfile";
 import MyPlan from "../Components/MyPlan";
+import Payment from "../Components/Payment";
 
 const Title = styled.h1`
   font-size: 1em;
@@ -69,7 +70,7 @@ function Main() {
   return (
     <>
       <Wrapper>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <HeadWrapper>
             <Title>
               <Link style={{ textDecoration: "none", color: "white" }} to="/">
@@ -90,6 +91,7 @@ function Main() {
             <Route path="/place/:id" element={<Place />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/myplan" element={<MyPlan />} />
+            <Route path="/payment" element={<Payment />} />
           </Routes>
           <Lower>
             <Item>
