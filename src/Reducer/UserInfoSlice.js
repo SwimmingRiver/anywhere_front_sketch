@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-export const initialState = [
+
+const initialState = [
   {
     id: "1",
     email: "123@123.com",
