@@ -11,9 +11,18 @@ function LodgeInfo() {
   const dispatch = useDispatch();
 
   const me = useSelector((state) => state.user.filter((v) => v.on === true));
+  const plan = useSelector((state) =>
+    state.plan.filter((v) => v.id === me[0].id)
+  );
+
   const onClick = () => {
     navigate("/payment");
-
+    dispatch(
+      ReservationSlice.actions.ADD_RESERVATION({
+        room_name: room,
+        city: plan[0].city,
+      })
+    );
   };
   return (
     <>
