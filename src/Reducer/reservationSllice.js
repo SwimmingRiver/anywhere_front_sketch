@@ -1,8 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState=[
-
-];
+const initialState=[{
+    booking_no:0,
+    member_no:0,
+    room_no:0,
+    check_in:"",
+    check_out:"",
+    guests:0,
+    booking_status:"",
+    created_at:"",
+    updated_at:""
+}];
 
 const ReservationSlice = createSlice({
     name:'reservation',

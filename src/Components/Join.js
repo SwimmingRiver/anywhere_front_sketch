@@ -9,6 +9,8 @@ function Join() {
   const [password, setPassword] = useInput("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [passwordErr, setPasswordErr] = useState(false);
+  const [userNum, setUserNum] = useState(2);
+
   const onPasswordCheck = useCallback(
     (e) => {
       setPasswordCheck(e.target.value);
@@ -23,29 +25,24 @@ function Join() {
   // const userData = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const addUser = (aId, aPw, aName) => {
-    let _user = {
-      id: aId,
-      pw: aPw,
-      name: aName,
-      // on:false
-    };
-    return _user;
-  };
   const onsubmit = useCallback(
     (e) => {
       e.preventDefault();
       if (passwordErr) {
         return setPasswordErr(true);
       }
-
       dispatch(
         userInfoSlice.actions.join({
-          id: id,
-          password: password,
-          nickname: nickname,
+          member_no: userNum,
+          member_email: id,
+          member_pwd: password,
+          member_name: nickname,
+          member_phone_num: "",
+          member_img_path: "",
+          member_status: "",
         })
       );
+      setUserNum((prev)=>prev+1);
       navigate("/");
     },
     [id, password, passwordCheck, nickname]

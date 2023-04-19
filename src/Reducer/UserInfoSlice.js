@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = [
   {
-    id: "1",
-    email: "123@123.com",
+    member_no: "1",
+    member_email: "123@123.com",
     isHost: false,
-    password: "1",
-    nickname: "firstman",
-    mobile: "000-0000-0000",
+    member_pwd: "1",
+    member_name: "firstman",
+    member_phone_num: "000-0000-0000",
+    member_img_path: "",
+    member_status: "", 
     on: false,
   },
   {
