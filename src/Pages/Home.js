@@ -10,7 +10,7 @@ const CarouselWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 25em 25em;
+  grid-template-columns: 40em 40em 40em;
   grid-template-rows: 25em 25em;
   place-items: center;
   @media(max-width:500px){
@@ -20,7 +20,10 @@ const CarouselWrapper = styled.div`
     height: 80vh;
   }
 `;
+const HomeWrapper = styled.div`
+  display: flex;
 
+`;
 
 function Home(){
   const LoggedUser = useSelector((state) => state.user);
@@ -35,18 +38,19 @@ function Home(){
 
     return(<>
      <h1>Home</h1>
+     <HomeWrapper>
      <h2>{LoggedUser.map((v) => (v.on ? `welcome,${v.nickname}` : null))}</h2>
       {LoggedUser.map((v) => v.on).includes(true) ? (
         <button onClick={onClick}>logout</button>
       ) : null}
     <CarouselWrapper>
         <Carousel place="도쿄" />
-        <Carousel place="런던" />
-        <Carousel place="뉴욕" />
         <Carousel place="부산" />
         <Carousel place="서울" />
+        <Carousel place="대구"/>
         <Carousel place="오사카" />
         </CarouselWrapper>
+        </HomeWrapper>
     </>)
 }
 export default Home;
