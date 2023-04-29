@@ -32,17 +32,17 @@ function Join() {
         return setPasswordErr(true);
       }
       dispatch(
-        userInfoSlice.actions.join({
-          member_no: userNum,
+        userInfoSlice.actions.USER_SIGN_UP({
+          isHost:false,
           member_email: id,
           member_pwd: password,
           member_name: nickname,
           member_phone_num: "",
           member_img_path: "",
           member_status: "",
+          on:false,
         })
       );
-      setUserNum((prev)=>prev+1);
       navigate("/");
     },
     [id, password, passwordCheck, nickname]

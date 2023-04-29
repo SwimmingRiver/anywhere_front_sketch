@@ -12,7 +12,7 @@ function MyPlan() {
 
   return (
     <>
-      <h1>{`${me[0].nickname}`} 님의 여행</h1>
+      <h1>{`${me[0].member_name}`} 님의 여행</h1>
       <h2>
         {myPlans[0]?.city ? (
           myPlans.map((v, i) => (
@@ -28,8 +28,6 @@ function MyPlan() {
           <Link to="/planner"> 여행 플랜을 만들어 보세요!</Link>
         )}
       </h2>
-
-      
         <h2>
           {paied.length === 0 ? null : (
             <>

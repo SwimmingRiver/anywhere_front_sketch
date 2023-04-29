@@ -13,18 +13,18 @@ function Login() {
   const navigate = useNavigate();
 
   const exUser = useSelector((state) => state.user);
-  const userIndex = exUser.map((i) => i.id).indexOf(id);
+  const userIndex = exUser.map((i) => i.member_email).indexOf(id);
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      let data = { id: id, password: password };
-      if (!exUser.map((v) => v.id).includes(id)) {
+      let data = { member_email: id, member_pwd: password };
+      if (!exUser.map((v) => v.member_email).includes(id)) {
         return alert("가입되지 않은 회원입니다.");
       }
-      if (exUser[userIndex].password !== password) {
+      if (exUser[userIndex].member_pwd !== password) {
         return alert("잘못된 암호입니다.");
       }
-      dispatch(userInfoSlice.actions.login(data));
+      dispatch(userInfoSlice.actions.USER_LOG_IN(data));
       navigate("/");
     },
     [id, password]

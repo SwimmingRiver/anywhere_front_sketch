@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useState } from "react";
 
 
 const initialState = [
@@ -12,37 +13,36 @@ const initialState = [
     member_img_path: "",
     member_status: "", 
     on: false,
-  },
-  {
-    id: "2",
-    password: "2",
-    nickname: "2",
-    on: false,
-  },
+  }
 ];
 
 const userInfoSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    join: (state, action) => {
+    USER_SIGN_UP: (state, action) => {
+      let num=2;
+      let {key,value}={key:"member_no",value:num};
+      action.payload[key]=value;
       state.push(action.payload);
+      num++;
     },
-    login: (state, action) => {
-      const index = state.map((v) => v.id).indexOf(action.payload.id);
+    USER_LOG_IN: (state, action) => {
+      const index = state.map((v) => v.member_email).indexOf(action.payload.member_email);
       state[index].on = true;
     },
-    logout: (state, action) => {
-      const index = state.map((v) => v.id).indexOf(action.payload.id);
+    USER_LOG_OUT: (state, action) => {
+      const index = state.map((v) => v.member_email).indexOf(action.payload.member_email);
       state[index].on = false;
     },
-    changeNickname: (state, action) => {
-      const { id, nickname } = action.payload;
-      const index = state.map((v) => v.id).indexOf(id);
+    USER_CHANGE_NICKNAME: (state, action) => {
+      const { member_email, member_name } = action.payload;
+      const index = state.map((v) => v.member_email).indexOf(member_email);
       state.splice(index, 1, {
-        id: state[index].id,
-        password: state[index].password,
-        nickname: nickname,
+        member_no:"",
+        member_email: state[index].member_email,
+        member_pwd: state[index].password,
+        member_name: member_name,
         on: true,
       });
       // state[index].nickname = action.payload;

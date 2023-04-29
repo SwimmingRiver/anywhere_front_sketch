@@ -22,6 +22,7 @@ const CarouselWrapper = styled.div`
 `;
 const HomeWrapper = styled.div`
   display: flex;
+  flex-direction: column;
 
 `;
 
@@ -39,9 +40,9 @@ function Home(){
     return(<>
      <h1>Home</h1>
      <HomeWrapper>
-     <h2>{LoggedUser.map((v) => (v.on ? `welcome,${v.nickname}` : null))}</h2>
+     <h2>{LoggedUser.map((v) => (v.on ? `welcome,${v.member_name}` : null))}</h2>
       {LoggedUser.map((v) => v.on).includes(true) ? (
-        <button onClick={onClick}>logout</button>
+        <button style={{height:"10px"}} onClick={onClick}>logout</button>
       ) : null}
     <CarouselWrapper>
         <Carousel place="도쿄" />
