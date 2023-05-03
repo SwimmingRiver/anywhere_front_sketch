@@ -1,11 +1,16 @@
 import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import useInput from "../Hooks/useInput";
+import userInfoSlice from "../Reducer/UserInfoSlice";
 
 function Join() {
   const [id, setId] = useInput("");
   const [password, setPassword] = useInput("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [passwordErr, setPasswordErr] = useState(false);
+  const [userNum, setUserNum] = useState(2);
+
   const onPasswordCheck = useCallback(
     (e) => {
       setPasswordCheck(e.target.value);
@@ -14,16 +19,35 @@ function Join() {
     [password]
   );
   const [nickname, setNickname] = useInput("");
+
+  const navigate = useNavigate();
+
+  // const userData = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const onsubmit = useCallback(
     (e) => {
       e.preventDefault();
       if (passwordErr) {
         return setPasswordErr(true);
       }
-      console.log("welcome");
+      dispatch(
+        userInfoSlice.actions.USER_SIGN_UP({
+          isHost:false,
+          member_email: id,
+          member_pwd: password,
+          member_name: nickname,
+          member_phone_num: "",
+          member_img_path: "",
+          member_status: "",
+          on:false,
+        })
+      );
+      navigate("/");
     },
     [id, password, passwordCheck, nickname]
   );
+
   return (
     <>
       <h2>Join</h2>
