@@ -17,18 +17,18 @@ function Place() {
   const myPlan = useSelector((state) => state.plan)
     .filter((v) => v.id === me[0].id)
     .map((v) => v);
-  const loadPlan = myPlan.filter((v) => v.city === id);
+  const loadPlan = myPlan.filter((v) => v.city_no === id);
 
   const [room, setRoom] = useState(0);
 
   const OnClick = () => {
-    navigate(`/lodgeinfo/${loadPlan[0].city}/${room}`);
+    navigate(`/lodgeinfo/${loadPlan[0].city_no}/${room}`);
   };
   return (
     <>
       <h1>Place</h1>
       <Nav>
-        (<h1>{loadPlan[0].city}</h1>/
+        (<h1>{loadPlan[0].city_no}</h1>/
         <h1>{`${loadPlan[0].reservationNumber}명`}</h1>/
         <h1>{`${loadPlan[0].dates[0].year}`}</h1>/
         <h1>{`${loadPlan[0].dates[0].month}`}</h1>/

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Payment() {
   const me = useSelector((state) => state.user).filter((v) => v.on === true);
   const myPlan = useSelector((state) => state.plan).filter(
-    (v) => v.id === me[0].id
+    (v) => v.member_no === me[0].member_no
   );
 
   const dispatch = useDispatch();
@@ -15,8 +15,8 @@ function Payment() {
   const onSubmit = () => {
     dispatch(
       ReservationSlice.actions.ADD_RESERVATION({
-        user: me[0].nickname,
-        location: myPlan[0].city,
+        user: me[0].member_no,
+        location: myPlan[0].city_no,
       })
     );
     navigate("/");
@@ -24,8 +24,8 @@ function Payment() {
   return (
     <>
       <h1>Payment</h1>
-      <h1>{me[0]?.nickname}</h1>
-      <h1>{myPlan[0].city}</h1>
+      <h1>{me[0]?.member_name}</h1>
+      <h1>{myPlan[0]?.city_no}</h1>
       <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="cardNumber">Card Number</label>

@@ -12,21 +12,22 @@ function LodgeInfo() {
 
   const me = useSelector((state) => state.user.filter((v) => v.on === true));
   const plan = useSelector((state) =>
-    state.plan.filter((v) => v.id === me[0].id)
+    state.plan.filter((v) => v.member_no === me[0].member_no)
   );
-
+  
   const onClick = () => {
     navigate("/payment");
     dispatch(
       ReservationSlice.actions.ADD_RESERVATION({
+        member_no: me[0].member_no,
         room_name: room,
-        city: plan[0].city,
+        city_no: plan[0].city_no,
       })
     );
   };
   return (
     <>
-      <h1>{me[0].nickname}</h1>
+      <h1>{me[0].member_name}</h1>
       <h1>{id}lodge info</h1>
 
       <Carousel />

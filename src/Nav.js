@@ -29,21 +29,17 @@ function Nav() {
   return (
     <NavWrapper>
       <ul>
-          <MenuList>
-            <MenuItem>
-              <StyledLink to="/">Home</StyledLink>
-            </MenuItem>
-            <MenuItem>
-              <StyledLink to="/join">Join</StyledLink>
-            </MenuItem>
-            <MenuItem>
-              <StyledLink to="/login">Login</StyledLink>
-            </MenuItem>
-            <MenuItem>
-            <StyledLink to="/lodgeinfo">Lodgeinfo</StyledLink>
+        <MenuList>
+          <MenuItem>
+            <Link to="/">home</Link>
           </MenuItem>
-          </MenuList>
-
+          <MenuItem>
+            <Link to="/join">join</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/login">login</Link>
+          </MenuItem>
+        </MenuList>
       </ul>
     </NavWrapper>
   );

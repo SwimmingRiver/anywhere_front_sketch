@@ -71,8 +71,8 @@ function Planner() {
   const onMakePlan = () => {
     //reducer  날짜+지역
     const plan = {
-      id: me[0].id,
-      city: cities,
+      member_no: me[0].member_no,
+      city_no: cities,
       reservationNumber: peopleNum,
       dates: selectedDates.map((date) => ({
         year: date.getFullYear(),
@@ -81,7 +81,18 @@ function Planner() {
       })),
     };
 
-    dispatch(PlanSlice.actions.ADD_PLAN(plan));
+    dispatch(PlanSlice.actions.ADD_PLAN(
+      {
+        member_no: me[0].member_no,
+        city_no: cities,
+        reservationNumber: peopleNum,
+        dates: selectedDates.map((date) => ({
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate(),
+        })),
+      }
+    ));
     navigate(`/place/${cities}`);
   };
   return (

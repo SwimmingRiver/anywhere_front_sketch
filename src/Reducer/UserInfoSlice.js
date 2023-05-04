@@ -1,5 +1,5 @@
+
 import { createSlice } from "@reduxjs/toolkit";
-import { useState } from "react";
 
 
 const initialState = [
@@ -9,6 +9,17 @@ const initialState = [
     isHost: false,
     member_pwd: "1",
     member_name: "firstman",
+    member_phone_num: "000-0000-0000",
+    member_img_path: "",
+    member_status: "", 
+    on: false,
+  },
+  {
+    member_no: "2",
+    member_email: "1",
+    isHost: false,
+    member_pwd: "1",
+    member_name: "thus",
     member_phone_num: "000-0000-0000",
     member_img_path: "",
     member_status: "", 
