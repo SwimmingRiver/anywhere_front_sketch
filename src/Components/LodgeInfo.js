@@ -16,14 +16,8 @@ function LodgeInfo() {
   );
   
   const onClick = () => {
-    navigate("/payment");
-    dispatch(
-      ReservationSlice.actions.ADD_RESERVATION({
-        member_no: me[0].member_no,
-        room_name: room,
-        city_no: plan[0].city_no,
-      })
-    );
+    navigate(`/payment/${room}`);
+    
   };
   return (
     <>

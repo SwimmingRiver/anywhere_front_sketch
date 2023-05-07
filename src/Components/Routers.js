@@ -27,7 +27,7 @@ function Routers() {
       <Route path="/place/:id" element={<Place />} />
       <Route path="/editprofile" element={<EditProfile />} />
       <Route path="/myplan" element={<MyPlan />} />
-      <Route path="/payment" element={<Payment />} />
+      <Route path="/payment/:room" element={<Payment />} />
     </Routes>
   );
 }

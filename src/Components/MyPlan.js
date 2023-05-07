@@ -6,7 +6,7 @@ function MyPlan() {
   const me = user.filter((v) => v.on === true);
 
   const plans = useSelector((state) => state.plan);
-  const myPlans = plans.filter((v) => v.id === me[0]?.id);
+  const myPlans = plans.filter((v) => v.member_no === me[0]?.member_no);
 
   const paied = useSelector((state) => state.reservation);
 
@@ -14,10 +14,10 @@ function MyPlan() {
     <>
       <h1>{`${me[0].member_name}`} 님의 여행</h1>
       <h2>
-        {myPlans[0]?.city ? (
+        {myPlans[0]?.city_no ? (
           myPlans.map((v, i) => (
             <li key={i}>
-              {v.city}/{v.reservationNumber}명/{v.dates[0].year}/
+              {v.city_no}/{v.reservationNumber}명/{v.dates[0].year}/
               {v.dates[0].month}/{v.dates[0].day}~ /
               {v.dates[v.dates.length - 1].year}/
               {v.dates[v.dates.length - 1].month}/

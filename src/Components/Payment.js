@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import ReservationSlice from "../Reducer/reservationSllice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
 function Payment() {
   const me = useSelector((state) => state.user).filter((v) => v.on === true);
   const myPlan = useSelector((state) => state.plan).filter(
     (v) => v.member_no === me[0].member_no
   );
-
+  const { room } = useParams();
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -15,8 +15,9 @@ function Payment() {
   const onSubmit = () => {
     dispatch(
       ReservationSlice.actions.ADD_RESERVATION({
-        user: me[0].member_no,
+        member_no: me[0].member_no,
         location: myPlan[0].city_no,
+        room_name: room,
       })
     );
     navigate("/");

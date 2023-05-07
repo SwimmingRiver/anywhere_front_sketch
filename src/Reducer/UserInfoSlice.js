@@ -1,5 +1,5 @@
-
-import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = [
@@ -26,6 +26,22 @@ const initialState = [
     on: false,
   }
 ];
+
+export const postUser = createAsyncThunk(
+  "post/user",
+  async ()=>{
+    const res = await axios.post("http://sign_up_api");
+    return res.data;
+  }
+)
+
+export const getUser = createAsyncThunk(
+  "get/user",
+  async ()=>{
+    const res = await axios.get("http://login_api");
+    return res.data;
+  }
+)
 
 const userInfoSlice = createSlice({
   name: "user",
@@ -59,6 +75,33 @@ const userInfoSlice = createSlice({
       // state[index].nickname = action.payload;
     },
   },
+  extraReducers:
+  (builder)=>{
+    builder.addCase(postUser.pending, (state, action) => {
+      state.status = "Loading...";
+  });
+  builder.addCase(postUser.fulfilled, (state, action) => {
+    state.value = action.payload;
+      state.status = "Complete";
+});
+builder.addCase(postUser.rejected, (state, action) => {
+  state.status = "Error";
+});
+//회원가입
+builder.addCase(getUser.pending, (state, action) => {
+  state.status = "Loading...";
+});
+builder.addCase(getUser.fulfilled, (state, action) => {
+  const index = state.map((v) => v.member_email).indexOf(action.payload.member_email);
+  state[index].on = true;
+  state.status = "Complete";
+});
+builder.addCase(getUser.rejected, (state, action) => {
+  state.status = "Error";
+});
+//로그인
+
+  }
 });
 
 export default userInfoSlice;
